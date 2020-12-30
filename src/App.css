@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+.FormLabel::after{
+  content: "*";
+  color: rgb(189, 29, 29);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.principal{
+  background-image: url(./img/footer-bg.png);
+}
+.fondoForm{
+  background-image: url(./img/home-1-bg.png);
+  background-size: cover;
+  box-shadow: 0 0 16px 1px rgba(41, 41, 41, 0.08)
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.updateContenedor{
+  /* background: #007EA6; */
+  background: url(./img/bg-pattern.png) repeat #007EA6;
+  border-radius: 40px;
+  min-height: 400px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.updateContenedor h3{
+  color: #fff;
+  font-weight: bold;
+  font-size: 35px;
+  position: relative;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.updateContenedor p {
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.updateContenedor .imageUpdateProfile{
+  position: absolute;
+  top: 22px;
+  left: 33px;
+  width: 8%;
+
+}
+
+.updateContenedor .imageUpdateProfile img{
+  min-width: 100%;
+  max-width: 100%;
+  border-radius: 60px;
+}
+
+.updateContenedor .imageUpdateProfile::after{
+  content: "";
+  background-color: #fff;
+  padding: 5px;
+  max-width: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  min-height: 30px;
+  border-radius: 60px;
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+  background-image: url(./img/camera.svg);
+}
+
+
+.HeaderStyle{
+  background-color: #0056A3!important;
+}
+
+.btn-login{
+  background: #0056A3!important;
+  border-color: #fff;
+}
+
+#basic-nav-dropdown{
+  color: #fff;
+}
+
+.tituloLogin{
+  z-index: 100;
+  position: relative;
+}
+
+.card-body .tituloLogin:before {
+  left: 144px;
+  width: 36%;
+  bottom: -4px;
+  height: 20px;
+  opacity: 1;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  background: #edf3fe;
+}
+
+.tituloRegister{
+  z-index: 100;
+  position: relative;
+}
+
+.card-body .tituloRegister:before {
+  left: 172px;
+  width: 28%;
+  bottom: -4px;
+  height: 20px;
+  opacity: 1;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  background: #edf3fe;
 }
