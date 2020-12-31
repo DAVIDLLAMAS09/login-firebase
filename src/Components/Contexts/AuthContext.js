@@ -37,6 +37,12 @@ export const useAuth = ()=> useContext(MyContext)
         return await Autentication.signInWithPopup(facebookAuthProvider)
      }
 
+    //  funcion para restablecer contraseña usuario
+
+    const ResetPass = async(email,actionCodeSettings)=>{
+      return  await Autentication.sendPasswordResetEmail(email,actionCodeSettings)
+    }
+
   
     
     // verificamos si existe un usuario y lo mandamos a un estado global
@@ -55,6 +61,7 @@ export const useAuth = ()=> useContext(MyContext)
         Registrar,
         Login,
         logout,
+        ResetPass,
         socialLoginFacebook,
         socialLoginGoogle
     }

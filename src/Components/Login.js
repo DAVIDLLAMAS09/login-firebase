@@ -26,6 +26,7 @@ function SignUp() {
         
         Login(emailRef.current.value,passwordRef.current.value)
         .then(user=>{
+            console.log(user);
            history.push("/dashboard")
         })
         .catch(err =>{
@@ -102,6 +103,9 @@ function SignUp() {
                         </Card.Body>
                         <div className="w-100 mt-2 mb-2 text-center">
                             ¿No tienes una cuenta? <Link to="/signup">Registrate</Link>
+                        </div>
+                        <div className="w-100 mt-2 mb-2 text-center">
+                             <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
                         </div>
                     </Card>
                 
