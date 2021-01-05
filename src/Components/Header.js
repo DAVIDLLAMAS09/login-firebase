@@ -26,7 +26,7 @@ export default function Header(props) {
                         <Nav className="ml-auto">
                             {/* <Nav.Link href="#home">Home</Nav.Link>
                             <Nav.Link href="#link">Link</Nav.Link> */}
-                            <img alt="" src={photoURL?photoURL:Avatar} width="35" style={{borderRadius:60}} height="35" className="inline-block align-top mt-1"/>
+                            <img alt="" src={photoURL?photoURL:Avatar} width="35" style={{borderRadius:60}} height="35" className="inline-block align-top mt-1 mr-2"/>
                             <NavDropdown title={displayName ? displayName : 'Actualiza tu perfil'} id="basic-nav-dropdown">
                                 <Link 
                                 to={{

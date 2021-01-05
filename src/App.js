@@ -5,7 +5,8 @@ import Dashboard from './Components/Dashboard'
 import Login from './Components/Login'
 import UpdateProfile from './Components/UpdateProfile'
 import ForgotPassword from './Components/ForgotPassword'
-// estados globales 
+import EditProduct from './Components/EditProduct'
+// para pasar estados a toda la aplicaiocn y mantener la sesion 
 import {AuthContext} from './Components/Contexts/AuthContext'
 // rutas privadas componente
 import PrivateRoutes from './Components/PrivateRoutes'
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" exact component={Login}/>
             <PrivateRoutes path="/updateProfile" component={UpdateProfile} />
             <Route path="/forgot-password" component={ForgotPassword} />
+            <PrivateRoutes exact path="/edit-product/:id" component={EditProduct} />
           </Switch>
         </Router>
       </AuthContext>

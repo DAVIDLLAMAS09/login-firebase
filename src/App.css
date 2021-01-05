@@ -108,3 +108,211 @@
   position: absolute;
   background: #edf3fe;
 }
+
+.card-contenedor{
+  border-radius: 20px!important;
+  overflow: hidden;
+  background-color: #FFF!important;
+  box-shadow: 0 0 16px 1px rgba(41, 41, 41, 0.08);
+  border: 0px!important;
+  margin-bottom: 15px;
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+
+/* .card::before{
+  left: -13px;
+    width: 30%;
+    border: 4px solid;
+    bottom: -12px;
+    height: 100%;
+    content: "";
+    position: absolute;
+    border-top: 0;
+    border-right: 0;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(120deg, #673AB7, #EC407A);
+} */
+.card-image{
+  padding: 0!important;
+  border-bottom: 0px!important;
+}
+
+.card-image img{
+  border-radius: 0px 0px 20px 20px;
+  min-height: 260px!important;
+  width: 100%!important;
+}
+
+.card-body{
+  padding: 0px!important;
+}
+
+.card-body .titulo{
+  width: 100%;
+    display: block;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: none;
+    text-align: center;
+}
+
+.card-body .descripcion{
+  padding: 0px 10px;
+  width: 100%;
+  text-align:left;
+}
+
+.card-body .precioProducto{
+  font-weight: bold;
+  background-color: #eb343d;
+  color: #fff;
+  width: 40%;
+  border-radius: 20px;
+  margin: 10px auto;
+  font-size: 16px;
+}
+
+.deleteIcon{
+  width: 40px;
+  cursor: pointer;
+
+}
+
+.card-body .btn-borrar{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px!important;
+  padding:0px
+}
+
+.btn-borrar:hover{
+  background-color:rgba(255, 255, 255, 0)!important;
+}
+
+.editIcon{
+  width: 40px;
+  cursor: pointer;
+
+}
+
+.card-body .btn-edit{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px!important;
+  padding:0px
+}
+
+.btn-edit:hover{
+  background-color:rgba(255, 255, 255, 0)!important;
+}
+
+.signUpContenedor{
+  width: 50%;
+  padding: 10px;
+}
+
+.loginContenedor{
+  width: 50%;
+  padding: 10px;
+}
+
+.forgorContenedor{
+  width: 50%;
+  padding: 10px;
+}
+
+
+/* responsive movile */
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .signUpContenedor{
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .loginContenedor{
+    width: 100%;
+    padding: 10px;
+  }
+
+  .forgorContenedor{
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card-body .tituloLogin:before {
+    left: 100px;
+    width: 44%;
+    bottom: -4px;
+    height: 20px;
+    opacity: 1;
+    content: "";
+    z-index: -1;
+    position: absolute;
+    background: #edf3fe;
+  }
+
+  .card-body .tituloRegister:before {
+    left: 102px;
+    width: 38%;
+    bottom: -4px;
+    height: 20px;
+    opacity: 1;
+    content: "";
+    z-index: -1;
+    position: absolute;
+    background: #edf3fe;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row!important;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    /* justify-content: space-around; */
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+  float: none;
+  width: 100%!important;
+}
+
+.dropdown, .dropleft, .dropright, .dropup {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  /* margin-left: .255em; */
+  vertical-align: .255em;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  float: right!important;
+  margin-top: 5px;
+  margin-right: 29px;
+}
+
+.card-body .precioProducto{
+  font-weight: bold;
+  background-color: #FF4081;
+  color: #fff;
+  width: 40%;
+  border-radius: 20px;
+  margin: 10px auto;
+  padding: 10px;
+}
+  
+}

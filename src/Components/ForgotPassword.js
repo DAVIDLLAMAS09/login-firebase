@@ -55,12 +55,12 @@ function ForgotPassword() {
         <Fragment>
             <section className="principal">
                 <Container className="d-flex align-items-center justify-content-center vw-100 vh-100 ">
-                    <Card className="w-50 fondoForm">
+                    <Card className="forgorContenedor fondoForm">
                         {show &&
                             <Alert className="text-center" variant={typeAlert}>{error}</Alert>
                         }
                         <Card.Body>
-                            <h2 className="mb-4 text-center tituloLogin" style={{color:'#001781'}}>Recuperar Contraseña</h2>
+                            <h2 className="mb-md-4 text-center tituloLogin" style={{color:'#001781'}}>Recuperar Contraseña</h2>
                             <Form onSubmit={onSubmit}>
                                 <Form.Group>
                                     <Form.Label className="FormLabel">Correo Electrónico</Form.Label>

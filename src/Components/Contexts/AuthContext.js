@@ -61,7 +61,7 @@ export const storageF = storageFirebase;
         return unsuscribe
     },[])
 
-    // variable donde tiene los datos a usar
+    // objeto donde tiene los datos a usar en otros componentes hijos
     const value ={
         currenUser,
         Registrar,

@@ -1,13 +1,19 @@
-import React, { useEffect,Fragment, useState} from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import React, { useEffect, useState} from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import {useAuth,dataBase,storageF} from './Contexts/AuthContext'
 import Header from './Header'
-
+import Cards from './Cards'
+import ModalComponent from  './Modal'
 
  const Dashboard = ()=> {
     const {currenUser} = useAuth();
     const [date,setDate] = useState(``)
     const [datos,setDatos] = useState([])
+    const [modal,setModal] = useState(false)
+    
+    // variables que contiene el id y el image Name para poder eliminar un producto
+    const [id,setId] = useState('')
+    const [imageName,setimageName] = useState('')
 
     // funcion que trae de la db de firebase los productos
     const fetchProductos=async()=>{
@@ -48,52 +54,54 @@ import Header from './Header'
            
     }
 
-    // funcion que elimina un producto y su imagen en storage
-    const _EliminarProducto=(id,imagen)=>{
-        dataBase.collection("productos").doc(id).delete()
-        let refDelete =storageF.ref(`productos/${imagen}`)
-        refDelete.delete().then(response=>{
-            fetchProductos()
-        })
-        .catch(err=>console.log(err))
+    // funcion para abrir el modal al querer eliminar un producto
+    const abrirModal =(id,imageName)=>{
+        setModal(true)
+        // mandamos los datos el estado
+        setId(id)
+        setimageName(imageName)
+    }
+
+    // cuando se presiona el btn del modal de aceptar elimina el producto
+   const _confirmacionEliminarProducto = ()=>{
+         //  eliminamos un producto por su id en bd
+         dataBase.collection("productos").doc(id).delete()
+        // eliminamos la imagen asociada
+         let refDelete =storageF.ref(`productos/${imageName}`)
+         refDelete.delete().then(response=>{
+             setModal(false)
+             fetchProductos()
+         })
+         .catch(err=>console.log(err))
         
     }
+
 
     useEffect(()=>{
        currenUser ? setDate(`${new Date(currenUser.metadata.lastSignInTime+' UTC')}`) : (setDate(''))
        fetchProductos()
     },[currenUser])
+
     return (
         <div>
-                    <Fragment>
+                    <div id="principal" style={{backgroundImage:'linear-gradient(-45deg, #2196F3 0%, #2196F3 33%, #00BFA5 100%)',borderRadius:5,minHeight:'100vh'}}>
                         <Header />
-                        <Container className="mt-4">
+                        <Container className="mt-md-4 p-md-3">
+                        <p>Hora de ultimo acceso:{date}</p>
                          <Row>
                              <Col md={12}>
-                             <p>Hora de ultimo acceso:{date}</p>
                              </Col>
-                                 {
-                                     datos.map(p=>( 
-                                    <Col md={3} key={p.id}>
-                                       { console.log(p)}
-                                        <Card>
-                                            <Card.Header>
-                                                <h2>Producto</h2>
-                                               <img style={{width:'100%'}} src={p.ImageURL} alt="hola"></img>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <p>{p.titulo}</p>
-                                                <p>{p.descripcion}</p>
-                                                {/* <p>{p.fechaCreacion.toDate().toString()}</p> */}
-                                                <p> MXN ${p.precio}</p>
-                                                <Button 
-                                                className="btn btn-danger float-md-right"
-                                                onClick={()=>_EliminarProducto(p.id,p.ImageName)}
-                                                >Borrar Producto</Button>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                     ))
+                                 { datos.length > 0 ? 
+                                 (  
+                                     datos.map(p => <Cards key={p.id} {...p} abrirModal={abrirModal} />)
+                                ) 
+                                 :
+                                 (
+                                 <Col md={12} style={{boxShadow:'0 10px 15px -5px rgba(62, 57, 107, .07)',backgroundColor:'#FFF',padding:15,borderRadius:10}}>
+                                    <h3 style={{textAlign:'center'}}>No se encontraron productos...</h3> 
+                                 </Col>
+                                 )
+                                  
                                  }
                          </Row>
                          <Row>
@@ -102,8 +110,10 @@ import Header from './Header'
                                  <Button onClick={crear_producto_temp}>crear producto</Button>
                              </Col>
                          </Row>
-                        </Container>   
-                    </Fragment>    
+                        </Container> 
+                         {/*modal para eliminar un producto donde le pasamos una funcion para ejecutarse desde el modal  */}
+                        <ModalComponent handleClose={()=>{setModal(false)}} show={modal} confirmacionEliminarProducto={_confirmacionEliminarProducto} /> 
+                    </div>    
         </div>
     );
 }

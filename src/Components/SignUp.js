@@ -38,7 +38,7 @@ function SignUp() {
         <Fragment>
             <section className="principal">
                 <Container className="d-flex align-items-center justify-content-center vw-100 vh-100">
-                    <Card className="w-50 fondoForm">
+                    <Card className="signUpContenedor fondoForm">
                         {show &&
                         <Alert className="text-center" variant="danger">{error}</Alert>
                         }
